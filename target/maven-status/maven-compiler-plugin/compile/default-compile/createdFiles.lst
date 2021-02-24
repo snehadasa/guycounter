@@ -1,0 +1,13 @@
+com/guycounter/GuyCounterApplication$1.class
+com/guycounter/resources/PersonResource.class
+com/guycounter/core/Counter.class
+com/guycounter/db/PeopleDao.class
+com/guycounter/core/PplGroups.class
+com/guycounter/GuyCounterApplication$2.class
+com/guycounter/core/Notes.class
+com/guycounter/db/GroupDao.class
+com/guycounter/core/PeopleGroupMapping.class
+com/guycounter/resources/GroupResource.class
+com/guycounter/GuyCounterApplication.class
+com/guycounter/core/People.class
+com/guycounter/GuyCounterConfiguration.class

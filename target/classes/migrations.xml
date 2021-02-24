@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Sneha">
+        <createTable tableName="people">
+            <column name="people_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email_id" type="varchar(256)"/>
+            <column name="phone_number" type="bigint"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="updated_at" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Sneha">
+        <createTable tableName="ppl_groups">
+            <column name="groups_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="people_group_mapping">
+            <column name="people_group_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="people_id" type="bigint"/>
+            <column name="group_id" type="bigint"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="updated_at" type="timestamp"/>
+        </createTable>
+
+        <createIndex
+                      tableName="people_group_mapping"
+                      unique="false" indexName="people_id_index">
+            <column name="people_id"/>
+        </createIndex>
+        <createIndex
+                      tableName="people_group_mapping"
+                      unique="false" indexName="group_id_index">
+            <column name="group_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="3" author="Sneha">
+        <createTable tableName="counter">
+            <column name="counter_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="count" type="bigint"/>
+            <column name="people_id" type="bigint"/>
+            <column name="group_id" type="bigint"/>
+        </createTable>
+        
+        <createIndex tableName="counter"
+                     unique="false" indexName="people_counter_id_index">
+            <column name="people_id"></column>
+        </createIndex>
+        <createIndex tableName="counter"
+                     unique="false" indexName="group_counter_id_index">
+            <column name="group_id"></column>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="4" author="Sneha">
+
+        <createTable tableName="notes">
+            <column name="counter_id" type="bigint"/>
+            <column name="count" type="bigint"/>
+            <column name="notes" type="varchar(256)"/>
+        </createTable>
+
+        <createIndex tableName="notes"
+                     unique="false" indexName="counter_id_index">
+            <column name="counter_id"></column>
+        </createIndex>
+    </changeSet>
+
+
+</databaseChangeLog>
